@@ -11,8 +11,7 @@ async function init() {
 
   await page.goto('https://sp.olx.com.br/grande-campinas/regiao-de-campinas', {
   });
-  await page.screenshot({ path: '/home/htb/Documentos/Projetos/webcrawler/images/print-da-olx.png' });
-  await page.pdf({ path: 'hn.pdf', format: 'a4' });
+  await page.screenshot({ path: 'print-da-olx.png' });
   
   const data = await page.evaluate(() => {
     const products = []
@@ -33,10 +32,6 @@ async function init() {
       products
     }
   })
-
-  await data.pdf({ path: 'search.pdf', format: 'a4'})
-
-  
 
   await browser.close();
 }
