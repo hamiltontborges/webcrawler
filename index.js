@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer');
+const fs = require('fs');
 
 async function init() {
 
@@ -33,6 +34,15 @@ async function init() {
     }
   })
 
+  // transformando a pesquisa em string
+  const producstsString = JSON.stringify(data.products)
+
+  // salvando os dados no arquivo
+  fs.writeFile('pesquisa.txt', producstsString, err => {
+    if(err) throw err
+    console.log('Arquivo salvo com sucesso!');
+  })
+  
   await browser.close();
 }
 
